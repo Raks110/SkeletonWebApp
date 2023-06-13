@@ -14,7 +14,17 @@ public class QueryProcessor {
     else if(query.toLowerCase().contains("name")) {
       return "Hi! My name is Rakshit Gl and I love experimenting with code, data and everything tech!";
     }
+    else if(query.toLowerCase().contains("age")) {
+      return "I am 24 year old! Got years of tech ahead of me- and I hope this is the start of something great!";
+    }
+    else if(query.toLowerCase().contains("location") || query.toLowerCase().contains("stay") || query.toLowerCase().contains("work")
+    || query.toLowerCase().contains("job") || query.toLowerCase().contains("career")) {
+      return "I am working at Deutsche Bank- which ensures I remain pinned in Pune. (P.S. I belong to Karnataka, India and love exploring new cities in India!)";
+    }
+    else if(query.toLowerCase().contains("hobby") || query.toLowerCase().contains("passtime") || query.toLowerCase().contains("fun")) {
+      return "I love competitive coding, listening to hip-hop music and vibing with fun people around me!";
+    }
 
-    return "";
+    return "Oops! I did not know that, could you hit me up with a new query?";
   }
 }
