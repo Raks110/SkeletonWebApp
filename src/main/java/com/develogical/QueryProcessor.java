@@ -11,6 +11,9 @@ public class QueryProcessor {
           + "English poet, playwright, and actor, widely regarded as the greatest "
           + "writer in the English language and the world's pre-eminent dramatist.";
     }
+    else if(query.toLowerCase().contains("name")) {
+      return "Hi! My name is Rakshit Gl and I love experimenting with code, data and everything tech!";
+    }
 
     return "";
   }
