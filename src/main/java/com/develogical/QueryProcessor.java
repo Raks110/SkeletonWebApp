@@ -64,7 +64,7 @@ public class QueryProcessor {
         }
       }
 
-      return largest + "";
+      return Math.round(largest) + "";
     }
     else if(query.toLowerCase().contains("plus")) {
       String fin = extractInt(query);
