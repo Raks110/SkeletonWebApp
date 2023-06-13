@@ -2,6 +2,25 @@ package com.develogical;
 
 public class QueryProcessor {
 
+  boolean isPrime(int n)
+    {
+        // Corner case
+        if (n <= 1)
+            return false;
+ 
+        if (n == 2 || n == 3)
+            return true;
+ 
+        if (n % 2 == 0 || n % 3 == 0)
+            return false;
+ 
+        for (int i = 5; i <= Math.sqrt(n); i = i + 6)
+            if (n % i == 0 || n % (i + 2) == 0)
+                return false;
+ 
+        return true;
+    }
+
   String extractInt(String str)
     {
         // Replacing every non-digit number
@@ -131,6 +150,33 @@ public class QueryProcessor {
                 res += (Math.round(item)) + ", ";
             }
       }
+      return res.substring(0, res.length()-2);
+    }
+
+    else if(query.toLowerCase().contains("prime")) {
+      String fin = extractInt(query);
+      String[] arr = fin.split(" ");
+      Float[] items = new Float[arr.length];
+      int index = 0;
+      for(String item: arr) {
+        try {
+          items[index++] = Float.parseFloat(item);
+        }
+        catch(Exception e) {
+
+        }
+      }
+
+      String res = "";
+      for(Float item: items) {
+        if(item == null)
+          continue;
+        int itemInt = Math.round(item);
+        if(isPrime(itemInt)) {
+          res += itemInt + ", ";
+        }
+      }
+
       return res.substring(0, res.length()-2);
     }
 
