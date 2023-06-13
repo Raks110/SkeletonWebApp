@@ -106,6 +106,31 @@ public class QueryProcessor {
       }
       return Math.round(sum) + "";
     }
+    else if(query.toLowerCase().contains("minus")) {
+      String fin = extractInt(query);
+      String[] arr = fin.split(" ");
+      Float[] items = new Float[arr.length];
+      int index = 0;
+      for(String item: arr) {
+        try {
+          items[index++] = Float.parseFloat(item);
+        }
+        catch(Exception e) {
+
+        }
+      }
+      float sum = 0;
+      for(Float item: items) {
+        if(item == null)
+          continue;
+        if(sum == 0) {
+          sum = item;
+        }
+        else
+          sum -= item;
+      }
+      return Math.round(sum) + "";
+    }
     else if(query.toLowerCase().contains("multipl")) {
       String fin = extractInt(query);
       String[] arr = fin.split(" ");
