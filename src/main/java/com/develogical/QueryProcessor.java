@@ -85,7 +85,7 @@ public class QueryProcessor {
           continue;
         sum += item;
       }
-      return sum + "";
+      return Math.round(sum) + "";
     }
     else if(query.toLowerCase().contains("multipl")) {
       String fin = extractInt(query);
@@ -106,7 +106,7 @@ public class QueryProcessor {
           continue;
         product *= item;
       }
-      return product + "";
+      return Math.round(product) + "";
     }
     else if(query.toLowerCase().contains("square") && query.toLowerCase().contains("cube")) {
       String fin = extractInt(query);
@@ -128,7 +128,7 @@ public class QueryProcessor {
           continue;
         if (Math.pow((int)Math.sqrt(item), 2) == item
                 && Math.pow((int)Math.cbrt(item), 3) == item) {
-                res += item + ", ";
+                res += (Math.round(item)) + ", ";
             }
       }
       return res;
