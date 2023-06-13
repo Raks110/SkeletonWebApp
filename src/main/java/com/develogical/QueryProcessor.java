@@ -28,7 +28,7 @@ public class QueryProcessor {
           + "writer in the English language and the world's pre-eminent dramatist.";
     }
     else if(query.toLowerCase().contains("name")) {
-      return "Hi! My name is Rakshit Gl and I love experimenting with code, data and everything tech!";
+      return "Rakshit Gl";
     }
     else if(query.toLowerCase().contains("age")) {
       return "I am 24 year old! Got years of tech ahead of me- and I hope this is the start of something great!";
