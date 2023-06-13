@@ -204,6 +204,33 @@ public class QueryProcessor {
 
       return res.substring(0, res.length()-2);
     }
+    else if(query.toLowerCase().contains("power")) {
+      String fin = extractInt(query);
+      String[] arr = fin.split(" ");
+      Float[] items = new Float[arr.length];
+      int index = 0;
+      for(String item: arr) {
+        try {
+          items[index++] = Float.parseFloat(item);
+        }
+        catch(Exception e) {
+
+        }
+      }
+
+      long res = 1;
+      for(Float item: items) {
+        if(item == null)
+          continue;
+        if(res == 1) {
+          res = Math.round(item);
+        }
+        else 
+          res = Math.round(Math.pow(res, item));
+      }
+
+      return res + "";
+    }
 
     return "Oops! I did not know that, could you hit me up with a new query?";
   }
