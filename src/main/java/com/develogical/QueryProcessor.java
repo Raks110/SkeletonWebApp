@@ -25,6 +25,31 @@ public class QueryProcessor {
       return "I love competitive coding, listening to hip-hop music and vibing with fun people around me!";
     }
 
+    else if(query.toLowerCase().contains("largest")) {
+      String que = query.substring(query.indexOf(":"));
+      que = que.trim();
+      String[] arr = que.split(", ");
+      Float[] items = new Float[arr.length];
+      int index = 0;
+      for(String item: arr) {
+        try {
+          items[index++] = Float.valueOf(item);
+        }
+        catch(Exception e) {
+          System.out.println(e.getMessage());
+        }
+      }
+
+      float largest = -1;
+      for(float item: items) {
+        if(item > largest) {
+          largest = item;
+        }
+      }
+
+      return "The largest item is: " + largest + ".";
+    }
+
     return "Oops! I did not know that, could you hit me up with a new query?";
   }
 }
