@@ -87,6 +87,52 @@ public class QueryProcessor {
       }
       return sum + "";
     }
+    else if(query.toLowerCase().contains("multipl")) {
+      String fin = extractInt(query);
+      String[] arr = fin.split(" ");
+      Float[] items = new Float[arr.length];
+      int index = 0;
+      for(String item: arr) {
+        try {
+          items[index++] = Float.parseFloat(item);
+        }
+        catch(Exception e) {
+
+        }
+      }
+      float product = 1;
+      for(Float item: items) {
+        if(item == null)
+          continue;
+        product *= item;
+      }
+      return product + "";
+    }
+    else if(query.toLowerCase().contains("square") && query.toLowerCase().contains("cube")) {
+      String fin = extractInt(query);
+      String[] arr = fin.split(" ");
+      Float[] items = new Float[arr.length];
+      int index = 0;
+      for(String item: arr) {
+        try {
+          items[index++] = Float.parseFloat(item);
+        }
+        catch(Exception e) {
+
+        }
+      }
+      
+      String res = "";
+      for(Float item: items) {
+        if(item == null)
+          continue;
+        if (Math.pow((int)Math.sqrt(item), 2) == item
+                && Math.pow((int)Math.cbrt(item), 3) == item) {
+                res += item + ", ";
+            }
+      }
+      return res;
+    }
 
     return "Oops! I did not know that, could you hit me up with a new query?";
   }
