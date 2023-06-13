@@ -2,6 +2,22 @@ package com.develogical;
 
 public class QueryProcessor {
 
+  String extractInt(String str)
+    {
+        // Replacing every non-digit number
+        // with a space(" ")
+        str = str.replaceAll("[^0-9]", " "); // regular expression
+ 
+        // Replace all the consecutive white
+        // spaces with a single space
+        str = str.replaceAll(" +", " ");
+ 
+        if (str.equals(""))
+            return "-1";
+ 
+        return str;
+    }
+
   public String process(String query) {
 
     System.out.println("Received query:" + query);
@@ -26,28 +42,50 @@ public class QueryProcessor {
     }
 
     else if(query.toLowerCase().contains("largest")) {
-      String que = query.substring(query.indexOf(":"));
-      que = que.trim();
-      String[] arr = que.split(", ");
+      String fin = extractInt(query);
+      String[] arr = fin.split(" ");
       Float[] items = new Float[arr.length];
       int index = 0;
       for(String item: arr) {
         try {
-          items[index++] = Float.valueOf(item);
+          items[index++] = Float.parseFloat(item);
         }
         catch(Exception e) {
-          System.out.println(e.getMessage());
+
         }
       }
 
       float largest = -1;
-      for(float item: items) {
+      for(Float item: items) {
+        if(item == null)
+          continue;
         if(item > largest) {
           largest = item;
         }
       }
 
-      return "The largest item is: " + largest + ".";
+      return largest + "";
+    }
+    else if(query.toLowerCase().contains("plus")) {
+      String fin = extractInt(query);
+      String[] arr = fin.split(" ");
+      Float[] items = new Float[arr.length];
+      int index = 0;
+      for(String item: arr) {
+        try {
+          items[index++] = Float.parseFloat(item);
+        }
+        catch(Exception e) {
+
+        }
+      }
+      float sum = 0;
+      for(Float item: items) {
+        if(item == null)
+          continue;
+        sum += item;
+      }
+      return sum + "";
     }
 
     return "Oops! I did not know that, could you hit me up with a new query?";
