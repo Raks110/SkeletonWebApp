@@ -131,7 +131,7 @@ public class QueryProcessor {
                 res += (Math.round(item)) + ", ";
             }
       }
-      return res;
+      return res.substring(0, res.length()-2);
     }
 
     return "Oops! I did not know that, could you hit me up with a new query?";
